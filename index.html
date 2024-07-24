@@ -54,28 +54,34 @@
                         
                         let pptx = new PptxGenJS();
                         pptx.layout = 'LAYOUT_WIDE';
+                        pptx.fill = '000000';
                         let opts = {
-                            x: 0.0,
-                            y: 2.95,
+                            x: 0,
+                            y: 0,
                             w: '100%',
-                            h: 1.61,
+                            h: 2.75591, // = 7cm
                             align: 'center',
-                            fontFace: "배달의민족 주아",
-                            fontSize: 56,
-                            color: '000000',
+                            fontFace: "나눔스퀘어 Bold",
+                            fontSize: 60,
+                            color: 'FFFFFF',
                         };
 
                         if(sentences.length % 2 == 0){
                             for(i=0;i<sentences.length;i+=2){
                                 let slide = pptx.addSlide();
-                                slide.addText(sentences[i]+'\n'+sentences[i+1], opts);
+                                slide.background = {color: '000000'};
+                                if(sentences[i+1] != "") slide.addText(sentences[i]+'\n'+sentences[i+1], opts);
+                                else slide.addText(sentences[i], opts);
                             }
                         }else{
                             for(i=0;i<sentences.length-1;i+=2){
                                 let slide = pptx.addSlide();
-                                slide.addText(sentences[i]+'\n'+sentences[i+1], opts);
+                                slide.background = {color: '000000'};
+                                if(sentences[i+1] != "") slide.addText(sentences[i]+'\n'+sentences[i+1], opts);
+                                else slide.addText(sentences[i], opts);
                             }
                             let slide = pptx.addSlide();
+                            slide.background = {color: '000000'};
                             slide.addText(sentences[sentences.length-1], opts);
                         }
 
