@@ -36,7 +36,8 @@
             <h1>가사 ppt 만들기</h1>
             <h5>두 줄 단위로 슬라이드가 생성됩니다.</h5>
             <textarea id="sentences" placeholder="Enter your sentences here"></textarea>
-            <button id="generateBtn">PPT파일 저장</button>
+            <button id="generateBtn">소망교회 송출 자막 생성</button>
+            <button id="generateBtn2">소망교회 현장 자막 생성</button>
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
@@ -99,6 +100,59 @@
                         pptx.writeFile();
                     });
             });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                document
+                    .getElementById('generateBtn2')
+                    .addEventListener('click', function () {
+                        const sentences = document
+                            .getElementById('sentences')
+                            .value
+                            .split('\n');
+                        if (sentences.length === 0) {
+                            alert('가사를 입력하세요.');
+                            return;
+                        }
+                        
+                        let pptx = new PptxGenJS();
+                        pptx.layout = 'LAYOUT_WIDE';
+                        pptx.fill = '000000';
+                        let opts = {
+                            // 소망교회 현장 자막
+                            x: 0,
+                            y: 2.37,
+                            w: '100%',
+                            h: 2.75591, // = 7cm
+                            align: 'center',
+                            fontFace: "a펜글씨B",
+                            fontSize: 60,
+                            color: 'FFFFFF', 
+
+                        };
+
+                        if(sentences.length % 2 == 0){
+                            for(i=0;i<sentences.length;i+=2){
+                                let slide = pptx.addSlide();
+                                slide.background = {color: '000000'};
+                                if(sentences[i+1] != "") slide.addText(sentences[i]+'\n'+sentences[i+1], opts);
+                                else slide.addText(sentences[i], opts);
+                            }
+                        }else{
+                            for(i=0;i<sentences.length-1;i+=2){
+                                let slide = pptx.addSlide();
+                                slide.background = {color: '000000'};
+                                if(sentences[i+1] != "") slide.addText(sentences[i]+'\n'+sentences[i+1], opts);
+                                else slide.addText(sentences[i], opts);
+                            }
+                            let slide = pptx.addSlide();
+                            slide.background = {color: '000000'};
+                            slide.addText(sentences[sentences.length-1], opts);
+                        }
+
+                        pptx.writeFile();
+                    });
+            });
+
         </script>
     </body>
 </html>
