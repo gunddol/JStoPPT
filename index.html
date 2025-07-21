@@ -108,73 +108,74 @@
           pptx.writeFile();
         });
       
-        document.getElementById('generateBtn3').addEventListener('click', function () {
-          const sentences = document.getElementById('sentences').value.split('\n');
+        // document.getElementById('generateBtn3').addEventListener('click', function () {
+        //   const sentences = document.getElementById('sentences').value.split('\n');
 
-          if (sentences.length === 0) {
-            alert('가사를 입력하세요.');
-            return;
-          }
+        //   if (sentences.length === 0) {
+        //     alert('가사를 입력하세요.');
+        //     return;
+        //   }
 
-          let pptx = new PptxGenJS();
-          pptx.layout = 'LAYOUT_WIDE';
-          pptx.fill = '000000';
-          let stageOpts = { // 서천수련관용 스테이지 스크린
-            x: 0,
-            y: 0.47244,
-            w: '100%',
-            h: 2.75591, // = 7cm
-            align: 'center',
-            fontFace: "한수원 한울림OTF",
-            fontSize: 60,
-            color: 'FFFFFF', 
-          };
+        //   let pptx = new PptxGenJS();
+        //   pptx.layout = 'LAYOUT_WIDE';
+        //   pptx.fill = '000000';
+        //   let stageOpts = { // 서천수련관용 스테이지 스크린
+        //     x: 0,
+        //     y: 0.47244,
+        //     w: '100%',
+        //     h: 2.75591, // = 7cm
+        //     align: 'center',
+        //     fontFace: "한수원 한울림OTF",
+        //     fontSize: 60,
+        //     color: 'FFFFFF', 
+        //   };
 
-          let sideOpts = { // 서천수련관용 좌우 TV모니터
-            x: -0.27165,
-            y: 5.51968,
-            w: '100%',
-            h: 1.9685, // = 5cm
-            align: 'right',
-            fontFace: "배달의민족 한나체 Air",
-            fontSize: 40,
-            color: 'FFFFFF', 
-          };
+        //   let sideOpts = { // 서천수련관용 좌우 TV모니터
+        //     x: -0.27165,
+        //     y: 5.51968,
+        //     w: '100%',
+        //     h: 1.9685, // = 5cm
+        //     align: 'right',
+        //     fontFace: "배달의민족 한나체 Air",
+        //     fontSize: 40,
+        //     color: 'FFFFFF', 
+        //   };
 
-          if(sentences.length % 2 == 0){
-            for(i=0;i<sentences.length;i+=2){
-              let slide = pptx.addSlide();
-              slide.background = {color: '000000'};
-              if(sentences[i+1] != "") {
-                slide.addText(sentences[i]+'\n'+sentences[i+1], stageOpts);
-                slide.addText(sentences[i]+'\n'+sentences[i+1], sideOpts);
-              }
-              else {
-                slide.addText(sentences[i], stageOpts);
-                slide.addText(sentences[i], sideOpts);
-              }
-            }
-          }else{
-            for(i=0;i<sentences.length-1;i+=2){
-              let slide = pptx.addSlide();
-              slide.background = {color: '000000'};
-              if(sentences[i+1] != "") {
-                slide.addText(sentences[i]+'\n'+sentences[i+1], stageOpts);
-                slide.addText(sentences[i]+'\n'+sentences[i+1], sideOpts);
-              }
-              else {
-                slide.addText(sentences[i], stageOpts);
-                slide.addText(sentences[i], sideOpts);
-              }
-            }
-            let slide = pptx.addSlide();
-            slide.background = {color: '000000'};
-            slide.addText(sentences[sentences.length-1], stageOpts);
-            slide.addText(sentences[sentences.length-1], sideOpts);
-          }
+        //   if(sentences.length % 2 == 0){
+        //     for(i=0;i<sentences.length;i+=2){
+        //       let slide = pptx.addSlide();
+        //       slide.background = {color: '000000'};
+        //       if(sentences[i+1] != "") {
+        //         slide.addText(sentences[i]+'\n'+sentences[i+1], stageOpts);
+        //         slide.addText(sentences[i]+'\n'+sentences[i+1], sideOpts);
+        //       }
+        //       else {
+        //         slide.addText(sentences[i], stageOpts);
+        //         slide.addText(sentences[i], sideOpts);
+        //       }
+        //     }
+        //   }else{
+        //     for(i=0;i<sentences.length-1;i+=2){
+        //       let slide = pptx.addSlide();
+        //       slide.background = {color: '000000'};
+        //       if(sentences[i+1] != "") {
+        //         slide.addText(sentences[i]+'\n'+sentences[i+1], stageOpts);
+        //         slide.addText(sentences[i]+'\n'+sentences[i+1], sideOpts);
+        //       }
+        //       else {
+        //         slide.addText(sentences[i], stageOpts);
+        //         slide.addText(sentences[i], sideOpts);
+        //       }
+        //     }
+        //     let slide = pptx.addSlide();
+        //     slide.background = {color: '000000'};
+        //     slide.addText(sentences[sentences.length-1], stageOpts);
+        //     slide.addText(sentences[sentences.length-1], sideOpts);
+        //   }
 
-          pptx.writeFile();
-        });
+        //   pptx.writeFile();
+        // });
+
       });
     </script>
   </body>
