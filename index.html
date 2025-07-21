@@ -64,7 +64,9 @@
 
           pptx.writeFile();
         });
+      });
 
+      document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('generateBtn2').addEventListener('click', function () {
           const sentences = document.getElementById('sentences').value.split('\n');
           if (sentences.length === 0) {
@@ -107,7 +109,7 @@
 
           pptx.writeFile();
         });
-      
+      });
         // document.getElementById('generateBtn3').addEventListener('click', function () {
         //   const sentences = document.getElementById('sentences').value.split('\n');
 
@@ -176,7 +178,6 @@
         //   pptx.writeFile();
         // });
 
-      });
     </script>
   </body>
 </html>
